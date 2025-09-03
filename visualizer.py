@@ -4,13 +4,11 @@ import matplotlib.pyplot as plt
 import seaborn as sns
 
 def plot_sentiment_distribution(df: pd.DataFrame):
-    """
-    绘制情感类别的分布和情感分数的分布
-    """
-    # 设置 Seaborn 样式
+
+    # Setting Seaborn Style
     sns.set(style="whitegrid")
 
-    # 情感类别分布
+    # Sentiment category distribution
     plt.figure(figsize=(6,4))
     sns.countplot(data=df, x='sentiment_label', palette='pastel')
     plt.title("Sentiment Label Distribution")
@@ -19,7 +17,7 @@ def plot_sentiment_distribution(df: pd.DataFrame):
     plt.tight_layout()
     plt.show()
 
-    # 情感分数分布
+    # Sentiment score distribution
     plt.figure(figsize=(6,4))
     sns.histplot(df['sentiment_score'], bins=20, kde=True, color='skyblue')
     plt.title("Sentiment Score Distribution")
@@ -28,7 +26,7 @@ def plot_sentiment_distribution(df: pd.DataFrame):
     plt.tight_layout()
     plt.show()
 
-    # 按日期分组，取平均情感分数
+    # Group by date and take the average sentiment score
     df['date'] = df['Timestamp'].dt.date
     trend = df.groupby('date')['sentiment_score'].mean().reset_index()
 
