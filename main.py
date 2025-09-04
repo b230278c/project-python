@@ -37,7 +37,7 @@ def main():
     except KeyError as e:
         print(f"Error: Required column missing - {e}")
     except Exception as e:
-        print(f"An error occurred during runtime：{e}")
+        print(f"An error occurred during runtime: {e}")
 
 if __name__ == "__main__":
     main()
